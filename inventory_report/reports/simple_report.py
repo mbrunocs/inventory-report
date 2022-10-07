@@ -9,9 +9,9 @@ class SimpleReport:
             Counter([prod['nome_da_empresa'] for prod in lst]).most_common())
 
         return (
-            f"Data de fabricação mais antiga: {oldest_maked_date}"
-            f"Data de validade mais próxima: {latest_maked_date}"
-            f"Empresa com mais produtos: {most_prod_manu[0][0]} com validade"
+            f"Data de fabricação mais antiga: {oldest_maked_date}\n"
+            f"Data de validade mais próxima: {latest_maked_date}\n"
+            f"Empresa com mais produtos: {str(most_prod_manu[0][0])}"
         )
 
 # referencias:
