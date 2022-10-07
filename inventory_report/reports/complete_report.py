@@ -6,7 +6,8 @@ class CompleteReport(SimpleReport):
     def generate(lst):
         compilado = ''
         all_manu = (
-            Counter([prod['nome_da_empresa'] for prod in lst]))
+            Counter([prod['nome_da_empresa'] for prod in lst])).items()
+
         for row in all_manu:
             compilado += f'- {row[0]}: {row[1]}\n'
 
