@@ -10,11 +10,6 @@ class CompleteReport(SimpleReport):
         for row in all_manu:
             compilado += f'- {row[0]}: {row[1]}\n'
 
-        print(str(
-            f"{SimpleReport.generate(lst)}\n"
-            f"Produtos estocados por empresa:\n"
-            f"{compilado}"))
-
         return (
             f"{SimpleReport.generate(lst)}\n"
             f"Produtos estocados por empresa:\n"
