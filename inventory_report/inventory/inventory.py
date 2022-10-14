@@ -1,7 +1,8 @@
 from abc import abstractmethod
-import csv
-import json
-import xml.etree.ElementTree as ET
+
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
 
@@ -17,14 +18,11 @@ class Inventory:
     def import_data(path: str, report_mode: str):
         content = []
         if path.endswith('.csv'):
-            with open(path) as file:
-                content = list(csv.DictReader(file))
+            content = CsvImporter(path)
         if path.endswith('.json'):
-            with open(path) as file:
-                content = json.load(file)
+            content = JsonImporter(path)
         if path.endswith('.xml'):
-            file = ET.parse(path).getroot()
-            content = [{data.tag: data.text for data in elem} for elem in file]
+            content = XmlImporter(path)
 
         if report_mode == 'completo':
             return CompleteReport.generate(content)

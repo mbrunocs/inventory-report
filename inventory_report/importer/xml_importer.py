@@ -7,9 +7,8 @@ class XmlImporter(Importer):
         try:
             if path.endswith('.xml'):
                 file = ET.parse(path).getroot()
-                content = [{
+                return [{
                   data.tag: data.text for data in elem} for elem in file]
-                return content
             else:
                 raise ValueError('Arquivo inválido')
         except FileNotFoundError:

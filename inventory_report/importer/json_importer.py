@@ -8,8 +8,7 @@ class JsonImporter(Importer):
         try:
             if path.endswith('.json'):
                 with open(path) as file:
-                    content = json.load(file)
-                    return content
+                    return json.load(file)
             else:
                 raise ValueError('Arquivo inválido')
         except FileNotFoundError:
