@@ -18,11 +18,11 @@ class Inventory:
     def import_data(path: str, report_mode: str):
         content = []
         if path.endswith('.csv'):
-            content = CsvImporter(path)
+            content = CsvImporter.import_data(path)
         if path.endswith('.json'):
-            content = JsonImporter(path)
+            content = JsonImporter.import_data(path)
         if path.endswith('.xml'):
-            content = XmlImporter(path)
+            content = XmlImporter.import_data(path)
 
         if report_mode == 'completo':
             return CompleteReport.generate(content)
