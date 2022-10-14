@@ -1,3 +1,4 @@
+from abc import abstractmethod
 import csv
 import json
 import xml.etree.ElementTree as ET
@@ -12,7 +13,8 @@ from inventory_report.reports.simple_report import SimpleReport
 
 
 class Inventory:
-    def import_data(path: str, report_mode):
+    @abstractmethod
+    def import_data(path: str, report_mode: str):
         content = []
         if path.endswith('.csv'):
             with open(path) as file:
