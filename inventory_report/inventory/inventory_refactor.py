@@ -1,5 +1,3 @@
-from abc import abstractmethod
-
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.inventory.inventory_iterator import InventoryIterator
@@ -10,7 +8,6 @@ class InventoryRefactor:
         self.importer = importer
         self.data = []
 
-    @abstractmethod
     def import_data(self, path: str, report_mode: str):
         new_data = self.importer.import_data(path)
         [self.data.append(data) for data in new_data]
